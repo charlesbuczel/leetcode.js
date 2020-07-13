@@ -1,14 +1,20 @@
 /**
- * Definition for singly-linked list.
+ * @typedef {Object} ListNode
+ * @description Definition for singly-linked list.
  * function ListNode(val, next) {
  *     this.val = (val===undefined ? 0 : val)
  *     this.next = (next===undefined ? null : next)
  * }
  */
+
 /**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
+ * @param {ListNode} l1 List representing integer1.
+ * @param {ListNode} l1 List representing integer2.
+ * @return {ListNode} List storing sum of integer1 and integer2.
+ * @summary Add Two Numbers {@link https://leetcode.com/problems/add-two-numbers/}
+ * @description Two non-negative integers stored in a list in revers order by digits. Return their sum.
+ * Space O(n) - length of new list will be same as number of digits in bigger number (+1).
+ * Time O(n) - Where n represents number of digits in bigger number.
  */
 const addTwoNumbers = (l1, l2) => {
     let head = new ListNode(0), current, value = 0;
