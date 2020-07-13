@@ -1,10 +1,11 @@
 const twoSum = (nums, target) => {
-    let hash = {}, index, remaining;
+    const hash = {};
+    let index, remaining;
 
     for (index = 0; index < nums.length; index++) {
         remaining = target - nums[index];
 
-        if (hash[remaining]) {
+        if (hash[remaining] !== undefined) {
             return [index, hash[remaining]];
         }
 
