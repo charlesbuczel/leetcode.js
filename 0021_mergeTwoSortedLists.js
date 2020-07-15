@@ -12,7 +12,7 @@
  * @param {ListNode} l2 Sorted list2.
  * @return {ListNode} Sorted list - merged l1 and l2.
  * @summary Merge Two Sorted Lists {@link https://leetcode.com/problems/merge-two-sorted-lists/}
- * @description Merge two sorted linked lists and return it as a new sorted list..
+ * @description Merge two sorted linked lists and return it as a new sorted list.
  * Space O(1) - reusing existing lists.
  * Time O(n) - iterate until shorter list is fully merged in (up two m+n operations).
  */
