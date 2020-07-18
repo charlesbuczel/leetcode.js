@@ -13,7 +13,7 @@
  * @summary Merge k Sorted Lists {@link https://leetcode.com/problems/merge-k-sorted-lists/}
  * @description Merge k sorted linke lists and return it as one sorted list.
  * Space O(1) - in place, reusing existing linked lists.
- * Time  O(nlogk) - logk pairings, each call to mergeTwoLists is n.
+ * Time O(nlogk) - logk pairings, each call to mergeTwoLists is n.
  */
 const mergeKLists = lists => {
     if (!lists.length) return null;
