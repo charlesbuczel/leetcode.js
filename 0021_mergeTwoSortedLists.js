@@ -17,22 +17,22 @@
  * Time O(n) - iterate until shorter list is fully merged in (up two m+n operations).
  */
 const mergeTwoLists = (l1, l2) => {
-    const start = new ListNode(0);
-    let prev = start;
+  const start = new ListNode(0);
+  let prev = start;
 
-    while (l1 && l2) {
-        if (l1.val < l2.val) {
-            prev.next = l1;
-            l1 = l1.next;
-        } else {
-            prev.next = l2;
-            l2 = l2.next;
-        }
-
-        prev = prev.next;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      prev.next = l1;
+      l1 = l1.next;
+    } else {
+      prev.next = l2;
+      l2 = l2.next;
     }
 
-    prev.next = !l1 ? l2 : l1;
+    prev = prev.next;
+  }
 
-    return start.next;
+  prev.next = !l1 ? l2 : l1;
+
+  return start.next;
 };

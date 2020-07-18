@@ -7,14 +7,14 @@
  * Time O(nlogn) - sort (logn) + one iteration of n elements. Depends on js engine sort implementation though.
  */
 const merge = intervals => {
-    intervals.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  intervals.sort((a, b) => (a[0] > b[0] ? 1 : -1));
 
-    const merged = [];
+  const merged = [];
 
-    intervals.forEach(interval => {
-        if (!merged.length || merged[merged.length - 1][1] < interval[0]) merged.push(interval);
-        else merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], interval[1]);
-    })
+  intervals.forEach(interval => {
+    if (!merged.length || merged[merged.length - 1][1] < interval[0]) merged.push(interval);
+    else merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], interval[1]);
+  });
 
-    return merged;
+  return merged;
 };

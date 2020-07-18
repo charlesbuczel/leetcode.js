@@ -16,20 +16,20 @@
  * Time O(nlogk) - logk pairings, each call to mergeTwoLists is n.
  */
 const mergeKLists = lists => {
-    if (!lists.length) return null;
-    if (lists.length === 1) return lists[0];
+  if (!lists.length) return null;
+  if (lists.length === 1) return lists[0];
 
-    const k = lists.length;
-    let pairings = 1;
+  const k = lists.length;
+  let pairings = 1;
 
-    while (pairings < k) {
-        for (let index = 0; index < k - pairings; index += pairings * 2) {
-            lists[index] = mergeTwoLists(lists[index], lists[index + pairings]);
-        }
-        pairings *= 2;
+  while (pairings < k) {
+    for (let index = 0; index < k - pairings; index += pairings * 2) {
+      lists[index] = mergeTwoLists(lists[index], lists[index + pairings]);
     }
+    pairings *= 2;
+  }
 
-    return lists[0];
+  return lists[0];
 };
 
 /**
@@ -39,23 +39,22 @@ const mergeKLists = lists => {
  * @description Merge two sorted linked lists and return it as a new sorted list.
  */
 const mergeTwoLists = (l1, l2) => {
-    const head = new ListNode(0);
+  const head = new ListNode(0);
 
-    let current = head;
-    while (l1 && l2) {
-        if (l1.val < l2.val) {
-            current.next = l1;
-            l1 = l1.next;
-        } else {
-            current.next = l2;
-            l2 = l2.next;
-        }
-
-        current = current.next;
+  let current = head;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      current.next = l1;
+      l1 = l1.next;
+    } else {
+      current.next = l2;
+      l2 = l2.next;
     }
 
-    current.next = !l1 ? l2 : l1;
+    current = current.next;
+  }
 
-    return head.next;
+  current.next = !l1 ? l2 : l1;
+
+  return head.next;
 };
-

@@ -8,16 +8,16 @@
  * Time O(n) - one iteration of n elements.
  */
 const twoSum = (nums, target) => {
-    const hash = {};
-    let index, remaining;
+  const hash = {};
+  let index, remaining;
 
-    for (index = 0; index < nums.length; index++) {
-        remaining = target - nums[index];
+  for (index = 0; index < nums.length; index++) {
+    remaining = target - nums[index];
 
-        if (hash[remaining] !== undefined) {
-            return [hash[remaining], index];
-        }
-
-        hash[nums[index]] = index;
+    if (hash[remaining] !== undefined) {
+      return [hash[remaining], index];
     }
+
+    hash[nums[index]] = index;
+  }
 };
