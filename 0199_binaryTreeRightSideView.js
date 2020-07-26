@@ -13,8 +13,8 @@
  * @return {number[]} List of nodes for right side of tree, ordered top to bottom.
  * @summary Binary Tree Right Side View {@link https://leetcode.com/problems/binary-tree-right-side-view/}
  * @description Given a binary tree, return right side of it, ordered.
- * Space O(1) -
- * Time O(n) -
+ * Space O(n) - up to diameter of tree (n/2) in queue at once.
+ * Time O(n) - traverse each tree element.
  */
 const rightSideView = root => {
   let current = [];
