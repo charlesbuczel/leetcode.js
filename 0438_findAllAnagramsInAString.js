@@ -4,8 +4,8 @@
  * @return {number[]} Array with indexes of all substrings that are anagrams of word.
  * @summary Find All Anagrams in a String {@link https://leetcode.com/problems/find-all-anagrams-in-a-string/}
  * @description Given two input strings return indexes of substrings that are anagrams of second input.
- * Space O(A+B) - A length of string 'word', B length of string 'stream'.
- * Time O(1) - Two new arrays, each of 26 elements.
+ * Space O(1) - Two new arrays, each of 26 elements.
+ * Time O(A+B) - A length of string 'word', B length of string 'stream'.
  */
 const findAnagrams = (stream, word) => {
   const counts = Array(26);
