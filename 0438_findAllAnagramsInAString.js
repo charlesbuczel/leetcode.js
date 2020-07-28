@@ -1,37 +1,39 @@
 /**
- * @param {string} s
- * @param {string} p
- * @return {number[]}
+ * @param {string} stream Input string.
+ * @param {string} word Word to compare substring to.
+ * @return {number[]} Array with indexes of all substrings that are anagrams of word.
+ * @summary Find All Anagrams in a String {@link https://leetcode.com/problems/find-all-anagrams-in-a-string/}
+ * @description Given two input strings return indexes of substrings that are anagrams of second input.
+ * Space O(A+B) - A length of string 'word', B length of string 'stream'.
+ * Time O(1) - Two new arrays, each of 26 elements.
  */
+const findAnagrams = (stream, word) => {
+  const counts = Array(26);
+  const currentCount = Array(26);
+  const offset = 'a'.charCodeAt();
+  const answer = [];
+  const sLength = stream.length;
+  const wLength = word.length;
 
-const isAnagram = (word, candidate) => {
-  if (word.length !== candidate.length) return false;
+  for (let i = 0; i < wLength; i++) {
+    const index = word[i].charCodeAt() - offset;
 
-  const charMap = {};
-  for (let index = 0; index < word.length; index++) {
-    if (word.indexOf(candidate[index]) < 0) {
-      return false;
-    }
-    charMap[word[index]] = charMap[word[index]] ? charMap[word[index]] + 1 : 1;
-    charMap[candidate[index]] = charMap[candidate[index]] ? charMap[candidate[index]] - 1 : -1;
+    counts[index] = counts[index] ? counts[index] + 1 : 1;
   }
 
-  return Object.keys(charMap).every(char => charMap[char] === 0);
-};
+  for (let i = 0; i < sLength; i++) {
+    const index = stream[i].charCodeAt() - offset;
 
-const findAnagrams = (s, p) => {
-  const anagrams = {};
-  anagrams[p] = true;
+    currentCount[index] = currentCount[index] ? currentCount[index] + 1 : 1;
 
-  const answer = [];
+    if (i >= wLength) {
+      const index = stream[i - wLength].charCodeAt() - offset;
+      currentCount[index] = currentCount[index] ? currentCount[index] - 1 : undefined;
+    }
 
-  const length = s.length - p.length + 1;
-  for (let index = 0; index < length; index++) {
-    const candidate = s.slice(index, index + p.length);
-
-    if (anagrams[candidate] === undefined) anagrams[candidate] = isAnagram(p, candidate);
-
-    if (anagrams[candidate]) answer.push(index);
+    if (counts.every((count, index) => count === currentCount[index])) {
+      answer.push(i - wLength + 1);
+    }
   }
 
   return answer;
