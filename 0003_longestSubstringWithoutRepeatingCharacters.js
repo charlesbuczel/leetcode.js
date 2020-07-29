@@ -1,26 +1,26 @@
+/**
+ * @param {string} s Input string.
+ * @return {number} Length of longest substring without repeating characters.
+ * @summary Longest Substring Without Repeating Characters {@link https://leetcode.com/problems/longest-substring-without-repeating-characters/}
+ * @description Given a string, find length of its longest substring without repeating characters.
+ * Space O(n) - hash object storing data will have no more than n elements.
+ * Time O(n) - one iteration of n elements.
+ */
 const lengthOfLongestSubstring = s => {
-  let longest = 0,
-    current = 0,
-    hashMap = {};
+  const charMap = {};
+  let maxLength = 0;
+  let currentStart = 0;
 
   for (let index = 0; index < s.length; index++) {
-    if (!hashMap[s[index]]) {
-      hashMap[s[index]] = true;
-      current++;
-    } else {
-      if (current > longest) {
-        longest = current;
-      }
+    const c = s[index];
 
-      current = 0;
-      index--;
-      hashMap = {};
+    if (charMap[c] !== undefined && charMap[c] >= currentStart) {
+      maxLength = Math.max(maxLength, index - currentStart);
+      currentStart = charMap[c] + 1;
     }
 
-    if (current > longest) {
-      longest = current;
-    }
+    charMap[c] = index;
   }
 
-  return longest;
+  return Math.max(maxLength, s.length - currentStart);
 };
