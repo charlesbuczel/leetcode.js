@@ -15,7 +15,7 @@ const isPalindrome = s => {
   if (!s) return true;
 
   const isAlphanumeric = c =>
-    (code >= 'a'.charCodeAt() && code <= 'z'.charCodeAt()) || (code >= '0'.charCodeAt() && code <= '9'.charCodeAt());
+    (c >= 'a'.charCodeAt() && c <= 'z'.charCodeAt()) || (c >= '0'.charCodeAt() && c <= '9'.charCodeAt());
 
   let left = 0;
   let right = s.length - 1;
