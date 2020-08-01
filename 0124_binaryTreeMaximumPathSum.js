@@ -7,19 +7,6 @@
  * }
  */
 
-let max = Number.MIN_SAFE_INTEGER;
-
-const maxValue = node => {
-  if (node === null) return 0;
-
-  let leftValue = Math.max(maxValue(node.left), 0);
-  let rightValue = Math.max(maxValue(node.right), 0);
-
-  max = Math.max(max, node.val + leftValue + rightValue);
-
-  return node.val + Math.max(leftValue, rightValue);
-};
-
 /**
  * @param {TreeNode} root Head of the binary tree.
  * @return {max} Maximum path sum.
@@ -29,6 +16,18 @@ const maxValue = node => {
  * Time O(k) - where k is height of tree.
  */
 const maxPathSum = root => {
+  let max = Number.MIN_SAFE_INTEGER;
+  const maxValue = node => {
+    if (node === null) return 0;
+
+    let leftValue = Math.max(maxValue(node.left), 0);
+    let rightValue = Math.max(maxValue(node.right), 0);
+
+    max = Math.max(max, node.val + leftValue + rightValue);
+
+    return node.val + Math.max(leftValue, rightValue);
+  };
+
   maxValue(root);
 
   return max;
